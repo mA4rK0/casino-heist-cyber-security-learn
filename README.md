@@ -37,6 +37,7 @@ git clone https://github.com/Kiinzu/foundry-casino-heist.git
     }
 ```
 ⚠️ - **Do Not Change the Setup for player!**
+
 5. To Test if solved, you can simply run this command
 ```shell
 forge test test/MasterOfBlackjack.t.sol -vvvv
