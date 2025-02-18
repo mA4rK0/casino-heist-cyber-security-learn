@@ -12,5 +12,33 @@ All the libraries such as [Openzepplin Contracts](https://docs.openzeppelin.com/
 ## How to Play
 1. Clone the Repository
 ```shell
-
+git clone https://github.com/Kiinzu/foundry-casino-heist.git
 ```
+
+2. You will find the Challenge in the `/src` accordingly to their Category.
+    - Basic (Introductory)
+    - Common (Common Vulnerabilities)
+    - VIP (Easier Stuff, trust me)
+
+3. You will find all the test in one foled `/test` (Basic, Common, VIP in one place).
+4. Some might require you to write Exploit Contract, some you can just edit the Test Directly. There will be `// Write Exploit Here`, that's the only place you should edit and some may include `vm.warp()`, you might also want to change this if you think you need it.
+```solidity
+// Example: test/MasterOfBlackjack.t.sol
+    function testIfSolved() public {
+        // Setup for Player
+        vm.startPrank(player, player);
+        vm.deal(player, 1 ether);
+
+        // Write Exploit here
+        vm.warp(19); // Feel free to change this to any block.timestamp that satisfy the requirement
+
+        vm.stopPrank();
+        assertEq(challSetup.isSolved(), true);
+    }
+```
+⚠️ - **Do Not Change the Setup for player!**
+5. To Test if solved, you can simply run this command
+```shell
+forge test test/MasterOfBlackjack.t.sol -vvvv
+```
+6. That's it! You good to go.
