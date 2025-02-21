@@ -1,5 +1,7 @@
 ## Foundry Casino Heist
 
+![Logo](./foundry-casino-heist.png)
+
 A Collection of Casino Heist's Challenges written in Foundry- Perfect for those who doesn't want to deploy anything and want to exercise their Test Writting skill in Foundry.
 
 ## Requirement
