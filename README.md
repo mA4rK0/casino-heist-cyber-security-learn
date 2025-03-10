@@ -11,6 +11,14 @@ What you need to prepare:
 
 All the libraries such as [Openzepplin Contracts](https://docs.openzeppelin.com/upgrades-plugins/foundry-upgrades) is already included in the GitHub Repository.
 
+## Mini-Guide
+This is the directory and its usage.
+
+- `/src` - all vulnerable contracts here.
+- `/test` - all testfile 
+- `/reading-mats/docs` - all vulnerabilities Explanation
+- `reading-mats/Mithrough` - all Mitigations & Walkthroughs
+
 ## How to Play
 1. Clone the Repository
 ```shell

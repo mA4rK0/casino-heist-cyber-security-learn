@@ -43,7 +43,7 @@ contract Bar{
     }
 
     modifier onlyMember() {
-        barMember[msg.sender] = true;
+        require(barMember[msg.sender] == true, "You are not a member!");
         _;
     }
 
