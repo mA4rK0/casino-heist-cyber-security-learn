@@ -17,7 +17,7 @@ This is the directory and its usage.
 - `/src` - all vulnerable contracts here.
 - `/test` - all testfile 
 - `/reading-mats/docs` - all vulnerabilities Explanation
-- `reading-mats/Mithrough` - all Mitigations & Walkthroughs
+- `/reading-mats/Mithrough` - all Mitigations & Walkthroughs
 
 ## How to Play
 1. Clone the Repository
