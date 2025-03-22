@@ -30,7 +30,7 @@ git clone https://github.com/Kiinzu/foundry-casino-heist.git
     - Common (Common Vulnerabilities)
     - VIP (Easier Stuff, trust me)
 
-3. You will find all the test in one foled `/test` (Basic, Common, VIP in one place).
+3. You will find all the test in one folder `/test` (Basic, Common, VIP in one place).
 4. Some might require you to write Exploit Contract, some you can just edit the Test Directly. There will be `// Write Exploit Here`, that's the only place you should edit and some may include `vm.warp()`, you might also want to change this if you think you need it.
 ```solidity
 // Example: test/MasterOfBlackjack.t.sol
