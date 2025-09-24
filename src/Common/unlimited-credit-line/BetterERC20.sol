@@ -4,11 +4,7 @@ pragma solidity ^0.8.26;
 interface IBetterERC20 {
     function transfer(address _to, uint256 _value) external returns (bool);
 
-    function transferFrom(
-        address _from,
-        address _to,
-        uint256 _value
-    ) external returns (bool);
+    function transferFrom(address _from, address _to, uint256 _value) external returns (bool);
 
     function approve(address _spender, uint256 _value) external returns (bool);
 
@@ -20,10 +16,7 @@ interface IBetterERC20 {
 
     function balanceOf(address _who) external view returns (uint256);
 
-    function allowance(
-        address _owner,
-        address _spender
-    ) external view returns (uint256);
+    function allowance(address _owner, address _spender) external view returns (uint256);
 
     function name() external view returns (string memory);
 

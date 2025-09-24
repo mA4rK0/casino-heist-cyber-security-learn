@@ -5,7 +5,7 @@ import {Test, console} from "forge-std/Test.sol";
 import {InjuBank} from "src/Common/inju-bank/InjuBank.sol";
 import {Setup} from "src/Common/inju-bank/Setup.sol";
 
-contract InjuBankTest is Test{
+contract InjuBankTest is Test {
     Setup public challSetup;
     InjuBank public IB;
 
@@ -30,5 +30,4 @@ contract InjuBankTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

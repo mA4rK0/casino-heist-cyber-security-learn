@@ -6,7 +6,7 @@ import {Manager} from "src/VIP/pupol-nft/Manager.sol";
 import {PupolMain} from "src/VIP/pupol-nft/PupolMain.sol";
 import {Setup} from "src/VIP/pupol-nft/Setup.sol";
 
-contract PupolTest is Test{
+contract PupolTest is Test {
     Setup public challSetup;
     Manager public manager;
     PupolMain public pupol;
@@ -21,19 +21,18 @@ contract PupolTest is Test{
         challSetup = new Setup{value: 1500 ether}();
         pupol = PupolMain(challSetup.pupol());
         manager = Manager(challSetup.manager());
-        
+
         vm.stopPrank();
     }
 
-    function testIfSolved() public{
+    function testIfSolved() public {
         // Setup for Player, set msg.sender and tx.origin to player to prevent confusion
         vm.startPrank(player, player);
         vm.deal(player, 10.01 ether);
-    
+
         // Write Exploit here
 
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

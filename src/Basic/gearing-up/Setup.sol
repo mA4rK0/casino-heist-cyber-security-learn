@@ -6,12 +6,11 @@ import "./GearingUp.sol";
 contract Setup {
     GearingUp public GU;
 
-    constructor() payable{
+    constructor() payable {
         GU = new GearingUp{value: 10 ether}();
     }
 
-    function isSolved() public view returns(bool){
+    function isSolved() public view returns (bool) {
         return GU.allFinished();
     }
-
 }

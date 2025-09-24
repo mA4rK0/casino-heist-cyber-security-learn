@@ -5,14 +5,14 @@ import {Test, console} from "forge-std/Test.sol";
 import {Briefing} from "src/Basic/briefing/Briefing.sol";
 import {Setup} from "src/Basic/briefing/Setup.sol";
 
-contract BriefingTest is Test{
+contract BriefingTest is Test {
     Setup public challSetup;
     Briefing public briefing;
 
     address public deployer = makeAddr("deployer");
     address public player = makeAddr("player");
 
-    function setUp() public{
+    function setUp() public {
         vm.startPrank(deployer);
         vm.deal(deployer, 10 ether);
         challSetup = new Setup(0x4e6f77596f754b6e6f7753746f7261676549734e6f7454686174536166652e2e);
@@ -20,7 +20,7 @@ contract BriefingTest is Test{
         vm.stopPrank();
     }
 
-    function testIfSolved() public{
+    function testIfSolved() public {
         // Setup for Player
         vm.startPrank(player, player);
         vm.deal(player, 7 ether);
@@ -30,5 +30,4 @@ contract BriefingTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

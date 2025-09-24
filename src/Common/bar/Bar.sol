@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.25;
 
-import { console } from "forge-std/Test.sol";
+import {console} from "forge-std/Test.sol";
 
-contract Bar{
-
+contract Bar {
     address public owner;
     mapping(address => bool) public barMember;
-    mapping(address => uint) public beerGlass;
+    mapping(address => uint256) public beerGlass;
     mapping(address => uint256) public balance;
 
     constructor(address _owner) payable {
@@ -29,7 +28,7 @@ contract Bar{
         beerGlass[msg.sender]++;
     }
 
-    modifier isHuman(){
+    modifier isHuman() {
         console.log(tx.origin);
         console.log(msg.sender);
         require(msg.sender == tx.origin, "Only Human Allowed in this Bar!");
@@ -49,5 +48,4 @@ contract Bar{
     receive() external payable {
         balance[msg.sender] += msg.value;
     }
-    
-} 
+}

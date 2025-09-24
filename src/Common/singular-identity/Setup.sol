@@ -3,16 +3,15 @@ pragma solidity ^0.8.26;
 
 import "./Singularity.sol";
 
-contract Setup{
+contract Setup {
     Singularity public singular;
 
-    constructor() payable{
+    constructor() payable {
         singular = new Singularity();
         singular.register{value: 20 ether}("Hubert", "Gallanghar");
     }
 
-    function isSolved() public view returns(bool){
+    function isSolved() public view returns (bool) {
         return singular.checkBalance("Hubert", "Gallanghar") == 0;
     }
-
 }

@@ -5,7 +5,7 @@ import {Test, console} from "forge-std/Test.sol";
 import {Roulette} from "src/Common/roulette/Roulette.sol";
 import {Setup} from "src/Common/roulette/Setup.sol";
 
-contract RouletteTest is Test{
+contract RouletteTest is Test {
     Setup public challSetup;
     Roulette public roulette;
 
@@ -27,10 +27,8 @@ contract RouletteTest is Test{
 
         // Write Exploit here
         vm.warp(7777); // Feel free to change this to any block.timestamp that satisfy the requirement
-        
 
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

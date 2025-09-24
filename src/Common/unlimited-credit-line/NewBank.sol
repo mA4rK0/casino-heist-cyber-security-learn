@@ -3,7 +3,7 @@ pragma solidity ^0.8.26;
 
 import {IBetterERC20} from "./BetterERC20.sol";
 
-contract NewBank is IBetterERC20{
+contract NewBank is IBetterERC20 {
     address public override owner;
     mapping(address => uint256) public override balanceOf;
     mapping(address => mapping(address => uint256)) public override allowance;
@@ -47,5 +47,4 @@ contract NewBank is IBetterERC20{
         require(balanceOf[_who] <= _value, "Insufficient balance to burn");
         balanceOf[_who] += _value;
     }
-    
 }

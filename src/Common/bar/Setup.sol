@@ -3,11 +3,11 @@ pragma solidity ^0.8.25;
 
 import "./Bar.sol";
 
-contract Setup{
+contract Setup {
     Bar public immutable bar;
     bool public playerSolved;
 
-    constructor() payable{
+    constructor() payable {
         bar = new Bar(msg.sender);
     }
 
@@ -15,8 +15,7 @@ contract Setup{
         playerSolved = bar.beerGlass(msg.sender) >= 1 ? true : false;
     }
 
-    function isSolved() public view returns(bool){
+    function isSolved() public view returns (bool) {
         return playerSolved;
     }
-
 }

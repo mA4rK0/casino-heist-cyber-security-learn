@@ -5,14 +5,14 @@ import {Test, console} from "forge-std/Test.sol";
 import {GearingUp} from "src/Basic/gearing-up/GearingUp.sol";
 import {Setup} from "src/Basic/gearing-up/Setup.sol";
 
-contract GearingUpTest is Test{
+contract GearingUpTest is Test {
     Setup public challSetup;
     GearingUp public GU;
 
     address public deployer = makeAddr("deployer");
     address public player = makeAddr("player");
 
-    function setUp() public{
+    function setUp() public {
         vm.startPrank(deployer);
         vm.deal(deployer, 10 ether);
         challSetup = new Setup{value: 10 ether}();
@@ -20,16 +20,14 @@ contract GearingUpTest is Test{
         vm.stopPrank();
     }
 
-    function testIfSolved() public{
+    function testIfSolved() public {
         // Setup for Player
         vm.startPrank(player, player);
         vm.deal(player, 7 ether);
 
         // Write Exploit here
 
-
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

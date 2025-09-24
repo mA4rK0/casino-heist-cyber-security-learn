@@ -4,7 +4,7 @@ pragma solidity ^0.8.26;
 import "./Administrator.sol";
 import "./Noble.sol";
 
-contract Setup{
+contract Setup {
     Noble public noble;
     Administrator public admin;
 
@@ -14,7 +14,7 @@ contract Setup{
         noble.setAdministrator(address(admin));
     }
 
-    function isSolved() public view returns(bool){
+    function isSolved() public view returns (bool) {
         return admin.trueNoble();
     }
 }

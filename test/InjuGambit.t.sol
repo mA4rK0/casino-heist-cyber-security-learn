@@ -6,7 +6,7 @@ import {ChallengeManager} from "src/VIP/inju-s-gambit/ChallengeManager.sol";
 import {Privileged} from "src/VIP/inju-s-gambit/Privileged.sol";
 import {Setup} from "src/VIP/inju-s-gambit/Setup.sol";
 
-contract InjusGambitTest is Test{
+contract InjusGambitTest is Test {
     Setup public challSetup;
     Privileged public priv;
     ChallengeManager public CM;
@@ -14,7 +14,7 @@ contract InjusGambitTest is Test{
     address public deployer = makeAddr("deployer");
     address public player = makeAddr("player");
 
-    function setUp() public{
+    function setUp() public {
         vm.startPrank(deployer);
         vm.deal(deployer, 200 ether);
         challSetup = new Setup{value: 150 ether}(0x494e4a55494e4a55494e4a5553555045524b45594b45594b45594b45594b4559);
@@ -23,7 +23,7 @@ contract InjusGambitTest is Test{
         vm.stopPrank();
     }
 
-    function testIfSolved() public{
+    function testIfSolved() public {
         // Setup for Player, set msg.sender and tx.origin to player to prevent confusion
         vm.startPrank(player, player);
         vm.deal(player, 10 ether);
@@ -34,5 +34,4 @@ contract InjusGambitTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

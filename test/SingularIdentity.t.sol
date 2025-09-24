@@ -5,7 +5,7 @@ import {Test, console} from "forge-std/Test.sol";
 import {Singularity} from "src/Common/singular-identity/Singularity.sol";
 import {Setup} from "src/Common/singular-identity/Setup.sol";
 
-contract SingularIdentityTest is Test{
+contract SingularIdentityTest is Test {
     Setup public challSetup;
     Singularity public singularity;
 
@@ -30,5 +30,4 @@ contract SingularIdentityTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

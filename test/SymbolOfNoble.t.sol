@@ -6,7 +6,7 @@ import {Noble} from "src/Common/symbol-of-noble/Noble.sol";
 import {Administrator} from "src/Common/symbol-of-noble/Administrator.sol";
 import {Setup} from "src/Common/symbol-of-noble/Setup.sol";
 
-contract SymboleOfNobleTest is Test{
+contract SymboleOfNobleTest is Test {
     Setup public challSetup;
     Noble public noble;
     Administrator public admin;
@@ -33,5 +33,4 @@ contract SymboleOfNobleTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

@@ -6,7 +6,7 @@ import {IBetterERC20} from "src/Common/unlimited-credit-line/BetterERC20.sol";
 import {NewBank} from "src/Common/unlimited-credit-line/NewBank.sol";
 import {Setup} from "src/Common/unlimited-credit-line/Setup.sol";
 
-contract UnlimitedCreditLineTest is Test{
+contract UnlimitedCreditLineTest is Test {
     Setup public challSetup;
     IBetterERC20 public BERC20;
     NewBank public NB;
@@ -34,5 +34,4 @@ contract UnlimitedCreditLineTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

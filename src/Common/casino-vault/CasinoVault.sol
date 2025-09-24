@@ -10,16 +10,15 @@ contract CasinoVault {
     }
 
     function verifyIdentity(address _identity, bytes memory data) public {
-        (bool success, ) = _identity.delegatecall(data);
+        (bool success,) = _identity.delegatecall(data);
         require(success, "Verifying failed");
     }
 
     function withdraw() public {
         require(msg.sender == owner, "Not the owner");
-        (bool transfered, ) = payable(owner).call{value: address(this).balance}("");
+        (bool transfered,) = payable(owner).call{value: address(this).balance}("");
         require(transfered, "Withdrawal Failed!");
     }
 
     receive() external payable {}
-    
 }

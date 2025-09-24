@@ -6,7 +6,7 @@ import {PrizePoolBattle} from "src/Common/voting-frenzy/PrizePool.sol";
 import {Participant1, Participant2, Participant3} from "src/Common/voting-frenzy/Participants.sol";
 import {Setup} from "src/Common/voting-frenzy/Setup.sol";
 
-contract VotingFrenzyTest is Test{
+contract VotingFrenzyTest is Test {
     Setup public challSetup;
     PrizePoolBattle public PZ;
 
@@ -28,9 +28,7 @@ contract VotingFrenzyTest is Test{
 
         // Write Exploit here
 
-
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

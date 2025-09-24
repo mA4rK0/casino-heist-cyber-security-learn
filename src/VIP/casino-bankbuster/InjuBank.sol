@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.25;
 
-contract InjuBank{
+contract InjuBank {
     address public owner;
     mapping(address => bool) public hasWithdrawed;
     mapping(address => uint256) public balances;
@@ -11,7 +11,7 @@ contract InjuBank{
     }
 
     // You Can Deposit ETH to get the equal amount of Inju
-    function deposit(uint256 _amount) public payable{
+    function deposit(uint256 _amount) public payable {
         require(_amount == msg.value, "There seem some mismatch between the input and actual deposit.");
         uint256 depositAmount = msg.value;
         hasWithdrawed[msg.sender] = false;
@@ -24,7 +24,7 @@ contract InjuBank{
         // Tell the bank you withdrawed some money
         hasWithdrawed[msg.sender] = true;
         uint256 newBalance = balances[msg.sender] - _amount;
-        (bool success, ) = msg.sender.call{value: _amount}("");
+        (bool success,) = msg.sender.call{value: _amount}("");
         require(success, "Sent Failed!");
         hasWithdrawed[msg.sender] = false; // Reset to basic
         balances[msg.sender] = newBalance;
@@ -32,8 +32,7 @@ contract InjuBank{
 
     // The Receive prevent you from accidentally Sending Random ETH
     // It will automatically Deposit the sent Ether
-    receive() external payable { 
+    receive() external payable {
         deposit(msg.value);
     }
-
 }

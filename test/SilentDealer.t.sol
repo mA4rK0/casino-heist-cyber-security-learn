@@ -5,7 +5,7 @@ import {Test, console} from "forge-std/Test.sol";
 import {Dealer} from "src/Common/silent-dealer/Dealer.sol";
 import {Setup} from "src/Common/silent-dealer/Setup.sol";
 
-contract SilentDealerTest is Test{
+contract SilentDealerTest is Test {
     Setup public challSetup;
     Dealer public dealer;
 
@@ -30,5 +30,4 @@ contract SilentDealerTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

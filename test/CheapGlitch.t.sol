@@ -5,7 +5,7 @@ import {Test, console} from "forge-std/Test.sol";
 import {Capitol} from "src/Common/cheap-glitch/Capitol.sol";
 import {Setup} from "src/Common/cheap-glitch/Setup.sol";
 
-contract CheapGlitchTest is Test{
+contract CheapGlitchTest is Test {
     Setup public challSetup;
     Capitol public capitol;
 
@@ -30,6 +30,4 @@ contract CheapGlitchTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
-
 }

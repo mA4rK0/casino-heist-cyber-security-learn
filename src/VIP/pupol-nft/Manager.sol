@@ -9,15 +9,12 @@ contract Manager {
 
     uint256 public PRICE_FOR_PUPOL;
 
-    constructor(
-        address _pupolMain,
-        uint256 _pupolPrice
-    ) {
+    constructor(address _pupolMain, uint256 _pupolPrice) {
         pupol = PupolMain(_pupolMain);
         PRICE_FOR_PUPOL = _pupolPrice;
     }
 
-    function claimNFT() external payable{
+    function claimNFT() external payable {
         require(msg.value == PRICE_FOR_PUPOL);
         pupol.mint(msg.sender);
     }
@@ -36,8 +33,7 @@ contract Manager {
         pupol.setApprovalForAll(_operator, _status);
     }
 
-    function isApprovedForAll(address _operator) public view returns(bool){
+    function isApprovedForAll(address _operator) public view returns (bool) {
         return pupol.isApprovedForAll(msg.sender, _operator);
     }
-
 }

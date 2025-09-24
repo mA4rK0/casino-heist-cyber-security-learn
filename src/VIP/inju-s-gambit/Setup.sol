@@ -10,7 +10,7 @@ contract Setup {
     Challenger1 public Chall1;
     Challenger2 public Chall2;
 
-    constructor(bytes32 _key) payable{
+    constructor(bytes32 _key) payable {
         privileged = new Privileged{value: 100 ether}();
         challengeManager = new ChallengeManager(address(privileged), _key);
         privileged.setManager(address(challengeManager));
@@ -20,7 +20,7 @@ contract Setup {
         Chall2 = new Challenger2{value: 5 ether}(address(challengeManager));
     }
 
-    function isSolved() public view returns(bool){
+    function isSolved() public view returns (bool) {
         return address(privileged.challengeManager()) == address(0);
     }
 }
@@ -28,18 +28,17 @@ contract Setup {
 contract Challenger1 {
     ChallengeManager public challengeManager;
 
-    constructor(address _target) payable{
+    constructor(address _target) payable {
         require(msg.value == 5 ether);
         challengeManager = ChallengeManager(_target);
         challengeManager.approach{value: 5 ether}();
-
     }
 }
 
 contract Challenger2 {
     ChallengeManager public challengeManager;
 
-    constructor(address _target) payable{
+    constructor(address _target) payable {
         require(msg.value == 5 ether);
         challengeManager = ChallengeManager(_target);
         challengeManager.approach{value: 5 ether}();

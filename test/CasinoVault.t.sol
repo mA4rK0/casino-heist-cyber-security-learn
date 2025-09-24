@@ -5,14 +5,14 @@ import {Test, console} from "forge-std/Test.sol";
 import {CasinoVault} from "src/Common/casino-vault/CasinoVault.sol";
 import {Setup} from "src/Common/casino-vault/Setup.sol";
 
-contract CasinoVaultTest is Test{
+contract CasinoVaultTest is Test {
     Setup public challSetup;
     CasinoVault public casinovault;
 
     address public deployer = makeAddr("deployer");
     address public player = makeAddr("player");
 
-    function setUp() public{
+    function setUp() public {
         vm.startPrank(deployer);
         vm.deal(deployer, 100 ether);
         challSetup = new Setup{value: 50 ether}();
@@ -29,6 +29,4 @@ contract CasinoVaultTest is Test{
 
         assertEq(challSetup.isSolved(), true);
     }
-
-
 }

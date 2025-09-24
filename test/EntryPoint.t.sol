@@ -5,14 +5,14 @@ import {Test, console} from "forge-std/Test.sol";
 import {EntryPoint} from "src/Common/entry-point/EntryPoint.sol";
 import {Setup} from "src/Common/entry-point/Setup.sol";
 
-contract EntryPointTest is Test{
+contract EntryPointTest is Test {
     Setup public challSetup;
     EntryPoint public EP;
 
     address public deployer = makeAddr("deployer");
     address public player = makeAddr("player");
 
-    function setUp() public{
+    function setUp() public {
         vm.startPrank(deployer);
         vm.deal(deployer, 10 ether);
         challSetup = new Setup();
@@ -20,7 +20,7 @@ contract EntryPointTest is Test{
         vm.stopPrank();
     }
 
-    function testIfSolved() public{
+    function testIfSolved() public {
         // Setup for Player
         vm.startPrank(player, player);
         vm.deal(player, 1 ether);
@@ -30,5 +30,4 @@ contract EntryPointTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

@@ -3,15 +3,14 @@ pragma solidity ^0.8.25;
 
 import "./Briefing.sol";
 
-contract Setup{
+contract Setup {
     Briefing public brief;
 
-    constructor(bytes32 _secretPhrase) payable{
+    constructor(bytes32 _secretPhrase) payable {
         brief = new Briefing(_secretPhrase);
     }
 
-    function isSolved() public view returns(bool){
+    function isSolved() public view returns (bool) {
         return brief.completedBriefing();
     }
-
 }

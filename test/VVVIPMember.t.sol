@@ -5,8 +5,7 @@ import {Test, console} from "forge-std/Test.sol";
 import {VVVIP} from "src/Common/vvvip-member/VVVIP.sol";
 import {Setup} from "src/Common/vvvip-member/Setup.sol";
 
-
-contract VVVIPMemberTest is Test{
+contract VVVIPMemberTest is Test {
     Setup public challSetup;
     VVVIP public vvvip;
 
@@ -28,9 +27,7 @@ contract VVVIPMemberTest is Test{
 
         // Write Exploit here
 
-
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

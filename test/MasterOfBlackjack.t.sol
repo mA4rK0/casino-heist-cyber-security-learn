@@ -5,7 +5,7 @@ import {Test, console} from "forge-std/Test.sol";
 import {Blackjack} from "src/Common/master-of-blackjack/Blackjack.sol";
 import {Setup} from "src/Common/master-of-blackjack/Setup.sol";
 
-contract MasterOfBlackjackTest is Test{
+contract MasterOfBlackjackTest is Test {
     Setup public challSetup;
     Blackjack public blackjack;
 
@@ -31,5 +31,4 @@ contract MasterOfBlackjackTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

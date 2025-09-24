@@ -6,7 +6,7 @@ import {InjuBank} from "src/VIP/casino-bankbuster/InjuBank.sol";
 import {InjuCasino} from "src/VIP/casino-bankbuster/InjuCasino.sol";
 import {Setup} from "src/VIP/casino-bankbuster/Setup.sol";
 
-contract CasinoBankbusterTest is Test{
+contract CasinoBankbusterTest is Test {
     Setup public challSetup;
     InjuCasino public IC;
     InjuBank public IB;
@@ -14,7 +14,7 @@ contract CasinoBankbusterTest is Test{
     address public deployer = makeAddr("deployer");
     address public player = makeAddr("player");
 
-    function setUp() public{
+    function setUp() public {
         vm.startPrank(deployer);
         vm.deal(deployer, 100 ether);
         challSetup = new Setup{value: 30 ether}();
@@ -23,7 +23,7 @@ contract CasinoBankbusterTest is Test{
         vm.stopPrank();
     }
 
-    function testIfSolved() public{
+    function testIfSolved() public {
         // Setup for Player, set msg.sender and tx.origin to player to prevent confusion
         vm.startPrank(player, player);
         vm.deal(player, 7 ether);
@@ -33,5 +33,4 @@ contract CasinoBankbusterTest is Test{
         vm.stopPrank();
         assertEq(challSetup.isSolved(), true);
     }
-
 }

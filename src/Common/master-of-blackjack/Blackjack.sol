@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.25;
 
-contract Blackjack{
-
+contract Blackjack {
     address public dealer;
     bool public playerWon;
     bool public dealerMoved;
@@ -21,10 +20,10 @@ contract Blackjack{
         uint256 dealerCards = 15;
         // You Have the first turn each time, you can choose either pass or draw
         // The dealer will always draw each turn, but... you can stall as long as you want.
-        if(_choice == 1 && playerMoved != true){
+        if (_choice == 1 && playerMoved != true) {
             playerCards += uint256(keccak256(abi.encodePacked(block.timestamp))) % 10;
             playerMoved = true;
-        }else if(_choice == 2 && dealerMoved != true){
+        } else if (_choice == 2 && dealerMoved != true) {
             // player pass, but the dealer will draw
             uint256 toAdd = 6;
             dealerCards += toAdd;
@@ -32,11 +31,10 @@ contract Blackjack{
             dealerWon = true;
         }
         // Transfer all balance if the playerWon
-        if(playerCards == 21){
+        if (playerCards == 21) {
             playerWon = true;
-            (bool transfered, ) = payable(msg.sender).call{value: address(this).balance}("");
+            (bool transfered,) = payable(msg.sender).call{value: address(this).balance}("");
             require(transfered, "Reward failed to sent");
         }
     }
-
 }

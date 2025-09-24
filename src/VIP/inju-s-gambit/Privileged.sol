@@ -3,12 +3,11 @@ pragma solidity ^0.8.26;
 
 import {ERC721URIStorage, ERC721} from "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract Privileged is ERC721URIStorage{
-
+contract Privileged is ERC721URIStorage {
     error Privileged_NotHighestPrivileged();
     error Privileged_NotManager();
 
-    struct casinoOwnerChallenger{
+    struct casinoOwnerChallenger {
         address challenger;
         bool isRich;
         bool isImportant;
@@ -23,36 +22,36 @@ contract Privileged is ERC721URIStorage{
     mapping(uint256 challengerId => casinoOwnerChallenger) public Requirements;
 
     modifier onlyOwner() {
-        if(msg.sender != casinoOwner){
+        if (msg.sender != casinoOwner) {
             revert Privileged_NotHighestPrivileged();
         }
         _;
     }
 
     modifier onlyManager() {
-        if(msg.sender != challengeManager){
+        if (msg.sender != challengeManager) {
             revert Privileged_NotManager();
         }
         _;
     }
 
-    constructor() payable ERC721("Casino Owner", "COS"){
+    constructor() payable ERC721("Casino Owner", "COS") {
         casinoOwner = msg.sender;
     }
 
-    function setManager(address _manager) public onlyOwner{
+    function setManager(address _manager) public onlyOwner {
         challengeManager = _manager;
     }
 
-    function fireManager() public onlyOwner{
+    function fireManager() public onlyOwner {
         challengeManager = address(0);
     }
 
-    function setNewCasinoOwner(address _newCasinoOwner) public onlyManager{
+    function setNewCasinoOwner(address _newCasinoOwner) public onlyManager {
         casinoOwner = _newCasinoOwner;
     }
 
-    function mintChallenger(address to) public onlyManager{
+    function mintChallenger(address to) public onlyManager {
         uint256 newChallengerId = challengerCounter++;
         _safeMint(to, newChallengerId);
 
@@ -65,7 +64,10 @@ contract Privileged is ERC721URIStorage{
         });
     }
 
-    function upgradeAttribute(uint256 Id, bool _isRich, bool _isImportant, bool _hasConnection, bool _hasVIPCard) public onlyManager {
+    function upgradeAttribute(uint256 Id, bool _isRich, bool _isImportant, bool _hasConnection, bool _hasVIPCard)
+        public
+        onlyManager
+    {
         Requirements[Id] = casinoOwnerChallenger({
             challenger: Requirements[Id].challenger,
             isRich: _isRich,
@@ -75,7 +77,7 @@ contract Privileged is ERC721URIStorage{
         });
     }
 
-    function resetAttribute(uint256 Id) public onlyManager{
+    function resetAttribute(uint256 Id) public onlyManager {
         Requirements[Id] = casinoOwnerChallenger({
             challenger: Requirements[Id].challenger,
             isRich: false,
@@ -85,15 +87,15 @@ contract Privileged is ERC721URIStorage{
         });
     }
 
-    function getRequirmenets(uint256 Id) public view returns (casinoOwnerChallenger memory){
+    function getRequirmenets(uint256 Id) public view returns (casinoOwnerChallenger memory) {
         return Requirements[Id];
     }
 
-    function getNextGeneratedId() public view returns (uint256){
+    function getNextGeneratedId() public view returns (uint256) {
         return challengerCounter;
     }
 
-    function getCurrentChallengerCount() public view returns (uint256){
+    function getCurrentChallengerCount() public view returns (uint256) {
         return challengerCounter - 1;
     }
 }
