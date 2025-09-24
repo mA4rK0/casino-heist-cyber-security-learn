@@ -52,4 +52,13 @@ git clone https://github.com/Kiinzu/foundry-casino-heist.git
 ```shell
 forge test test/MasterOfBlackjack.t.sol -vvvv
 ```
-6. That's it! You good to go.
+6. add `.env` file in the root directory
+    ```
+    RPC_URL=
+    SetupADDR=
+    BriefADDR=
+    PRIVATE_KEY=
+    WalletADDR=
+    StorageSLOT=
+    ```
+7. That's it! You good to go.
