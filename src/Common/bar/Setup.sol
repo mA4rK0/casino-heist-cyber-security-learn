@@ -8,7 +8,7 @@ contract Setup{
     bool public playerSolved;
 
     constructor() payable{
-        bar = new Bar();
+        bar = new Bar(msg.sender);
     }
 
     function solvedByPlayer() public {

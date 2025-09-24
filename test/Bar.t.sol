@@ -21,14 +21,29 @@ contract BarTest is Test{
     }
 
     function testIfSolved() public{
-        // Setup for Player, set msg.sender and tx.origin to player to prevent confusion
-        vm.startPrank(player, player);
-        vm.deal(player, 2 ether);
-
-        // Write Exploit here
-
+       // Player register
+        vm.startPrank(player, player); // Set both msg.sender dan tx.origin
+        vm.deal(player, 1 ether);
+        bar.register{value: 1 ether}();
         vm.stopPrank();
-        assertEq(challSetup.isSolved(), true);
+
+        assertEq(bar.balance(player), 1 ether, "Player should have 1 ether balance");
+
+        // Owner add player as member
+        vm.startPrank(deployer, deployer);
+        bar.addMember(player);
+        vm.stopPrank();
+
+        assertTrue(bar.barMember(player), "Player should be a member");
+
+        // Player get drink and check solution
+        vm.startPrank(player, player);
+        bar.getDrink();
+        challSetup.solvedByPlayer(); 
+        vm.stopPrank();
+
+        assertEq(bar.beerGlass(player), 1, "Player should have 1 beer glass");
+        assertTrue(challSetup.isSolved(), "Challenge should be solved");
     }
 
 }
